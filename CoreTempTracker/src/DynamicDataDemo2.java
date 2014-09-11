@@ -109,8 +109,6 @@ public class DynamicDataDemo2 extends ApplicationFrame
 				// (you may want to catch a ParseException)
 				do
 				{
-					System.out.println(Graph.i);
-					Graph.i++;
 					String time = resultset.getString(1);
 					myDate = standardDateFormat.parse(resultset.getString(1));
 					//System.out.println(new Day(myDate));
@@ -123,7 +121,8 @@ public class DynamicDataDemo2 extends ApplicationFrame
 					int milsecV = Integer.parseInt(datas[2].substring(index + 1));
 					count++;
 					double value = resultset.getDouble(2);
-					timeseries.add(new Millisecond(myDate), value);		
+					timeseries.add(new Millisecond(myDate), value);	
+					LoadingPanel.progressBar.setValue(LoadingPanel.progressBar.getValue() + 1);
 				}
 				while (resultset.next());
 

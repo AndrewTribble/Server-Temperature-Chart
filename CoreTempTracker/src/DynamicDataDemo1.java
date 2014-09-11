@@ -107,11 +107,9 @@ public class DynamicDataDemo1 extends ApplicationFrame
 
 				do
 				{
-					System.out.println(Graph.i);
 					Graph.i++;
 					String time = resultset.getString(1);
 					myDate = standardDateFormat.parse(resultset.getString(1));
-					//System.out.println(new Day(myDate));
 					String[] datas = time.split(" ");
 					datas = datas[1].split(":");
 					int hourV = Integer.parseInt(datas[0]);
@@ -121,7 +119,8 @@ public class DynamicDataDemo1 extends ApplicationFrame
 					int milsecV = Integer.parseInt(datas[2].substring(index + 1));
 					count++;
 					double value = resultset.getDouble(2);
-					timeseries.add(new Millisecond(myDate), value);				
+					timeseries.add(new Millisecond(myDate), value);			
+					LoadingPanel.progressBar.setValue(LoadingPanel.progressBar.getValue() + 1);
 				}
 				while (resultset.next());
 

@@ -4,9 +4,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import javax.swing.JProgressBar;
+import javax.swing.JLabel;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 
 public class LoadingPanel extends JFrame {
+	public static JProgressBar progressBar = new JProgressBar();
 
 	private JPanel contentPane;
 
@@ -30,12 +40,26 @@ public class LoadingPanel extends JFrame {
 	 * Create the frame.
 	 */
 	public LoadingPanel() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-	}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 341, 93);
+		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
+		
+		JLabel lblNewLabel = new JLabel("Loading...");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(6, 16, 329, 16);
+		getContentPane().add(lblNewLabel);
+		
+		progressBar.setBounds(6, 34, 329, 20);
+		getContentPane().add(progressBar);
+		progressBar.setMaximum(33000);
 
+		JLabel label = new JLabel("Loading...");
+		label.setBounds(63, 10, 200, 50);
+		contentPane.add(label);
+		
+		
+		
+	}
 }
