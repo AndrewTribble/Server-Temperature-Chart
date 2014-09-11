@@ -107,7 +107,6 @@ public class DynamicDataDemo1 extends ApplicationFrame
 
 				do
 				{
-					Graph.i++;
 					String time = resultset.getString(1);
 					myDate = standardDateFormat.parse(resultset.getString(1));
 					String[] datas = time.split(" ");
@@ -146,7 +145,6 @@ public class DynamicDataDemo1 extends ApplicationFrame
 			super(new BorderLayout());
 			lastValue = 100D;
 			series = new TimeSeries("Ubuntu00001", DynamicDataDemo1.class$org$jfree$data$time$Millisecond != null ? DynamicDataDemo1.class$org$jfree$data$time$Millisecond : (DynamicDataDemo1.class$org$jfree$data$time$Millisecond = DynamicDataDemo1.class$("org.jfree.data.time.Millisecond")));
-
 			timeseriescollection = createDataset();
 			ChartPanel chartpanel = new ChartPanel(createChart(timeseriescollection));
 			chartpanel.setPreferredSize(new Dimension(1000, 270));
@@ -186,7 +184,7 @@ public class DynamicDataDemo1 extends ApplicationFrame
 		series.clear();
 		timeseriescollection.getSeries(0).add(new Millisecond(), val);
 		lbl.setText("Current Temperature: " + timeseriescollection.getSeries(0).getValue(timeseriescollection.getSeries(0).getItemCount()-1));
-
+		timeseriescollection.getSeries(0).removeAgedItems(true);
 	}
 
 	static Class class$(String s)
