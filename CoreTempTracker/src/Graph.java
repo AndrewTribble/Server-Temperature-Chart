@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -29,13 +30,13 @@ public class Graph {
 		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent e) {
 			try {
-				rs = stmt.executeQuery("SELECT * FROM core_temp_tracker.CoreTemps;");
+				rs = stmt.executeQuery("SELECT * FROM core_temp_tracker.CoreTemps WHERE time > DATE_SUB(NOW(), INTERVAL 20 Second)");
 				rs.last();
 				dynamicdatademo1.addValue(rs.getDouble("Temp"));
 				dynamicdatademo2.addValue(rs.getDouble("Temp"));
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e1.printStackTrace();  
 			}	
 		}
 	};
@@ -84,6 +85,7 @@ class MyThread1 extends Thread {
 }
 
 class MyThread2 extends Thread {
+	@SuppressWarnings("deprecation")
 	public void run(){
 
 		Graph.dynamicdatademo1 = new DynamicDataDemo1("Dynamic Data Demo");

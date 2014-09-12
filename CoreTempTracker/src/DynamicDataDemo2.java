@@ -188,6 +188,15 @@ public class DynamicDataDemo2 extends ApplicationFrame
 		series.clear();
 		timeseriescollection.getSeries(0).add(new Millisecond(), val);
 		lbl.setText("Current Temperature: " + timeseriescollection.getSeries(0).getValue(timeseriescollection.getSeries(0).getItemCount()-1));
+		
+		if(val > maxAxis){
+			maxAxis = val;
+			valueaxis.setRange(minAxis, maxAxis);
+		}
+		if(val < minAxis){
+			minAxis = val;
+			valueaxis.setRange(minAxis, maxAxis);
+		}
 
 	}
 	

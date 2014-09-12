@@ -53,7 +53,7 @@ public class LoadingPanel extends JFrame {
 		
 		progressBar.setBounds(6, 34, 329, 20);
 		getContentPane().add(progressBar);
-		progressBar.setMaximum(33000);
+		progressBar.setMaximum(86400);
 
 		JLabel label = new JLabel("Loading...");
 		label.setBounds(63, 10, 200, 50);
